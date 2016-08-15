@@ -1,0 +1,21 @@
+/**
+ * @author Gladys De La Roca, Jackeline Hidalgo
+ * @version 0.0
+ * @date 15/08/2016
+ * @file AbstractList.java
+ * 
+ */
+public abstract class AbstractList<E> implements List<E> {
+
+	public AbstractList(){
+		
+	}
+	
+	public boolean IsEmpty(){
+		return size() == 0;
+	}
+	
+	public boolean contains(E value){
+		return -1 !=indexOf(value);
+	}
+}
