@@ -8,8 +8,7 @@ import java.util.Iterator;
  * Implementa una lista enlazada
  * 
  */
-public class SingleLinkedList<E> implements IList<E>
-{
+public class SingleLinkedList<E> extends AbstractList<E>{
 	protected int count; // list size
 	protected Node<E> head; // ref. to first element
 
