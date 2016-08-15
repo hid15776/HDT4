@@ -6,7 +6,7 @@
  */
 
 public class ListFactory<E> {
-    public List<E> getList(String entry){
+    public IList<E> getIList(String entry){
         if(entry.equals("1"))
             return new SinglyLinkedList<E>();
         if(entry.equals("2"))
