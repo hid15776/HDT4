@@ -1,12 +1,12 @@
 /**
  * @author
- * Clase I_Pila
+ * Clase IStack
  * Interfaz de la Pila
- * @version 24/07/2016
+ * @version 15/08/2016
  */
 
 
-public interface IPila <E> {
+public interface IStack <E> {
 
 	//Metodos de la interfaz
 	public void Push (E element);
