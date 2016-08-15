@@ -53,9 +53,18 @@ public class Calculadora implements ICalculadora {
 					break;
 					
 				case "/":
-					resultado = (int)miPila.Pop() / (int)miPila.Pop();
-					miPila.Push(resultado);
+					int num1 = (int)miPila.Pop();
+					int num2 = (int)miPila.Pop();
+					resultado = num2 / num1;
+					miPila.Push(resultado);//Se almacena el resultado en la pila
 					break;
+					
+				case "-":
+					num1 = (int)miPila.Pop();
+					num2 = (int)miPila.Pop();
+					resultado = num2 - num1;
+					miPila.Push(resultado);//Se almacena el resultado en la pila
+					break;	
 				   }
 	             }	
 		      }
