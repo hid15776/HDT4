@@ -5,19 +5,20 @@
  */
 
 import java.util.List;
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class StackList<E> extends AbstractStack<E>{
 	public ListFactory factorList = new ListFactory();
     	protected IList<E> data = (IList<E>) factorList.getIList(parametro());
     	String opcion; 
-
+	Scanner keyboard = new Scanner(System.in);
+	
 	public String parametro(){
 		System.out.println("[1] ArrayList");
 		System.out.println("[2] Vector");
 		System.out.println("[3] Lista");
 		System.out.print("Seleccione la implementacion para la pila que desee: ");
-		opcion = Integer.parseInt(keyboard.nextLine());
+		opcion = Integer.parseString(keyboard.nextLine());
 		return opcion;
 	}
 
