@@ -8,7 +8,7 @@ import java.util.Iterator;
  */
 
 
-public interface List<E> {
+public interface IList<E> {
    public int size();
    public boolean IsEmpty();
    public void clear();
