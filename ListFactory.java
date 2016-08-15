@@ -8,7 +8,7 @@
 public class ListFactory<E> {
     public IList<E> getIList(String entry){
         if(entry.equals("1"))
-            return new SinglyLinkedList<E>();
+            return new SingleLinkedList<E>();
         if(entry.equals("2"))
             return new DoubleLinkedList<E>();
         if(entry.equals("3"))
