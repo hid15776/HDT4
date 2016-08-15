@@ -12,11 +12,11 @@ public class Main {
 		//Mensaje de bienvenida y se muestra el resultado de la operacion
 		System.out.println("Bienvenido a la calculadora POST-FIX.\nUsted habrá llenado el respectivo archivo con las operaciones.");
 		public StackFactory factor = new StackFactory();
-        public Stack<String> miStack = factor.getStack(parametro()); 
+        	public Stack<String> miStack = factor.getStack(parametro()); 
 		//String cadena = Calculadora.LeerArchivo("datos.txt");
 		
 		Scanner keyboard = new Scanner(System.in); 
-		public String parametro(){
+		public int parametro(){
 			int option1 = 0;
 			while (option1 == 0){
 				System.out.println("[1] ArrayList");
@@ -33,7 +33,7 @@ public class Main {
 					option1 = 0;
 				}
 			}
-			return opcion1;
+			return option1;
 		}
 	}
 }
