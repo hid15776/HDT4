@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * @author Gladys de la Roca, Jackeline Hidalgo
  * Clase Main
