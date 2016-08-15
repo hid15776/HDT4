@@ -8,16 +8,28 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class StackList<E> extends AbstractStack<E>{
-    public ListFactory factorList = new ListFactory();
-    protected List<E> data = (List<E>) factorList.getList(parametro());
-    String opcion; 
+	public ListFactory factorList = new ListFactory();
+    	protected List<E> data = (List<E>) factorList.getList(parametro());
+    	String opcion; 
 
-	public String parametro()
-	// post: constructs a new, empty stack
-	{
-		//Aca se pone que parametro se quiere encontrar 
-            opcion = JOptionPane.showInputDialog("Elegir lista a utilizar: \n1) lista circular.\n2) lista simple.\n3) lista doble",opcion);
-            return opcion;
+	public String parametro(){
+		int option1 = 0;
+		while (option1 == 0){
+			System.out.println("[1] ArrayList");
+			System.out.println("[2] Vector");
+			System.out.println("[3] Lista");
+			System.out.print("Seleccione la implementacion para la pila que desee: ");
+			try{
+				option1 = Integer.parseInt(keyboard.nextLine());
+			}
+			catch (NumberFormatException e){
+				System.out.println();
+				System.out.println("Error: opcion invalida");
+				System.out.println();
+				option1 = 0;
+			}
+		return opcion1;
+		}
 	}
 
 	public void Push(E element)
