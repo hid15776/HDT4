@@ -17,22 +17,11 @@ public class Main {
 		
 		Scanner keyboard = new Scanner(System.in); 
 		public int parametro(){
-			int option1 = 0;
-			while (option1 == 0){
-				System.out.println("[1] ArrayList");
-				System.out.println("[2] Vector");
-				System.out.println("[3] Lista");
-				System.out.print("Seleccione la implementacion para la pila que desee: ");
-				try{
-					option1 = Integer.parseInt(keyboard.nextLine());
-					}
-				catch (NumberFormatException e){
-					System.out.println();
-					System.out.println("Error: opcion invalida");
-					System.out.println();
-					option1 = 0;
-				}
-			}
+			System.out.println("[1] ArrayList");
+			System.out.println("[2] Vector");
+			System.out.println("[3] Lista");
+			System.out.print("Seleccione la implementacion para la pila que desee: ");
+			option1 = Integer.parseString(keyboard.nextLine());
 			return option1;
 		}
 	}
