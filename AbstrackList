@@ -5,7 +5,7 @@
  * @file AbstractList.java
  * 
  */
-public abstract class AbstractList<E> implements List<E> {
+public abstract class AbstractList<E> implements IList<E> {
 
 	public AbstractList(){
 		
