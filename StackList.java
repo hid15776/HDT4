@@ -1,4 +1,5 @@
 /**
+ /**
  * @author Gladys de la Roca, Jackeline Hidalgo
  * StackList
  * @version 15/08/2016
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class StackList<E> extends AbstractStack<E>{
 	public ListFactory factorList = new ListFactory();
-    	protected IList<E> data = (IList<E>) factorList.getIList(parametro());
+    	protected IList<E> data = (IList<E>) factorList.getList(parametro());
     	String opcion; 
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -31,13 +32,13 @@ public class StackList<E> extends AbstractStack<E>{
 	public E Pop(){
 	// pre: stack is not empty
 	// post: most recently pushed item is removed and returned
-		return data.remove(size()-1);
+		return data.remove(Size()-1);
 	}
 
 	public E Get(){
 	// pre: stack is not empty
 	// post: top value (next to be popped) is returned
-		return data.get(size() - 1);
+		return data.get(Size() - 1);
 	}
 	
 	public int Size(){
@@ -47,6 +48,6 @@ public class StackList<E> extends AbstractStack<E>{
   
 	public boolean IsEmpty(){
 	// post: returns true if and only if the stack is empty
-		return size() == 0;
+		return Size() == 0;
 	}
 }
