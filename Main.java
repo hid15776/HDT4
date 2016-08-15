@@ -2,7 +2,7 @@
  * @author Gladys de la Roca, Jackeline Hidalgo
  * Clase Main
  * Main del programa
- * @version 24/07/2016
+ * @version 15/08/2016
  */
 
 public class Main {
