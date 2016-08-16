@@ -2,7 +2,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 /**
  * @author Gladys De La Roca, Jackeline Hidalgo
- * Clase PilaTest
+ * Clase StackListTest
  * Prueba JUnit 
  * @version 24/07/2016
  */
