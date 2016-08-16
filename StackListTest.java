@@ -1,7 +1,7 @@
 import junit.framework.TestCase;
 import org.junit.Test;
 /**
- * @author Diego Soler, Gladys de la Roca, Rene Olivet
+ * @author Gladys De La Roca, Jackeline Hidalgo
  * Clase PilaTest
  * Prueba JUnit 
  * @version 24/07/2016
