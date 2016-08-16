@@ -75,7 +75,6 @@ public E removeFirst()
 
 public E removeLast()
 {
-    Assert.pre(!isEmpty(),"list is not empty.");
     Node<E> finger = tail;
     while (finger.next() != tail) {
         finger = finger.next();
@@ -185,7 +184,6 @@ public E set(int i, E o)
 
 public void add(int i, E o)
 {
-    Assert.pre((0 <= i) && (i <= size()),"Index in range.");
     if (i == 0) addFirst(o);
     else if (i == size()) addLast(o);
     else {
@@ -206,7 +204,6 @@ public void add(int i, E o)
 
 public E remove(int i)
 {
-    Assert.pre((0 <= i) && (i < size()),"Index in range.");
     // if not in list, return nothing
     if (i == 0) return removeFirst();
     if (i == size()-1) return removeLast();
