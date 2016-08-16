@@ -1,7 +1,3 @@
-
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.File;
 /**
  * @author 
  * Clase Calculadora
@@ -9,105 +5,95 @@ import java.io.File;
  * @version 24/07/2016
  */
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
-public class Calculadora implements ICalculadora {
-	
-	//Atributos
-	private Pila miPila;
-	
-	//Constructor
-	public Calculadora(){
-		miPila= new Pila();
-	}
-	
-	/**
-	*Calcula la operacion POST FIX
-	*@param String: vector
-	*/
-	@Override
-	public int Calcular(String vector) {
-		
-		int resultado = 0;
-		
-		String [] cadena = vector.split(" "); //Se convierte la operacion en un array de caracteres, exceptuando el espacio entre operadores
-		for (int x = 0; x<cadena.length; x++){
-			
-			try{
-				miPila.Push(Integer.parseInt(cadena[x])); //Se va agregando al stack si el caracter es un numero
-			}
-			
-			catch(Exception e){ 
-				
-				switch(cadena[x]) {
-				
-				//Si no es un numero, es un operador, y se realiza la operacion correspondiente
-			
-				case "+":
-					resultado = (int)miPila.Pop() + (int)miPila.Pop();
-					miPila.Push(resultado); //Se almacena el resultado en la pila
-					break;
-					
-				case "*":
-					resultado = (int)miPila.Pop() * (int)miPila.Pop();
-					miPila.Push(resultado);
-					break;
-					
-				case "/":
-					int num1 = (int)miPila.Pop();
-					int num2 = (int)miPila.Pop();
-					resultado = num2 / num1;
-					miPila.Push(resultado);//Se almacena el resultado en la pila
-					break;
-					
-				case "-":
-					num1 = (int)miPila.Pop();
-					num2 = (int)miPila.Pop();
-					resultado = num2 - num1;
-					miPila.Push(resultado);//Se almacena el resultado en la pila
-					break;	
-				   }
-	             }	
-		      }
-		
-			return resultado; //Retorna el resultado de la operacion del archivo de texto
-	       }
 
-	/**
-	*Lee la operacion POST FIX desde un archivo de texto
-	*@param String: direccion
-	*/
-	@Override
-	public String LeerArchivo(String direccion){
-		
-		//Variables necesarias para leer el archivo, utilizando paquetes File,FileReader y BufferedReader
-		File archivo = null;
-		FileReader fr = null;
-		BufferedReader br = null;
-		String linea = "";
-		
-		try {
-		archivo = new File (direccion); //Se carga el archivo
-		fr = new FileReader (archivo);
-		br = new BufferedReader(fr);
-
-		
-		linea = br.readLine(); //Se guarda la linea con la operacion en una variable
-			
-		
-			
-		
-				}//FIN DEL TRY
-		
-		   catch(Exception e){
-		      System.err.println("El archivo está vacío. No hay ninguna instrucción"); //Error por si esta vacio el archivo
-		     
-		   }
-		
-		
-		return linea;
-	}
+    public class Calculadora {
+        public StackFactory factor = new StackFactory();
+        public IStack<String> miStack = factor.getStack(parametro()); 
+        
+        int numero;
+        double operando1;
+        double operando2;
+        String sCadenaSinBlancos = "";
+        String opcion;
+        
+     
+        public String parametro(){
+            opcion = JOptionPane.showInputDialog("Bienvenido a la calculadora POST-FIX\nUsted habrá llenado el respectivo archivo con las operaciones.\nSeleccione implementacion que desee para la pila: \n [1] ArrayList \n [2] Vector \n [3] Lista");
+            return opcion;
+        }
+        File f = new File( "datos.txt" );
+        
+        BufferedReader entrada;
+        
+        public void calcular() {
+        try {
+       
+        entrada = new BufferedReader( new FileReader( f ) );
+        String linea;
+        
+        while(entrada.ready()){
+            //Detecta lo que se encuentra en la linea leida del archivo.txt
+            linea = entrada.readLine();
+            System.out.println(linea);
+            
+            for (int x=0; x < linea.length(); x++) {
+                if (linea.charAt(x) != ' '){
+                    //Guarda en una cadena la linea del calculo sin espacios
+                    sCadenaSinBlancos += linea.charAt(x);
+                }
+            }
+            
+            //Evalua lo que se encuentra dentro de la linea sin espacios hasta que se haya completado el largo
+            for(int x=0; x<sCadenaSinBlancos.length(); x++){
+                String dato =  Character.toString(sCadenaSinBlancos.charAt(x));
+                //Si el caracter no es una operacion se guarda el dato
+                if( (dato.equals("+") || dato.equals("-") || dato.equals("*") || dato.equals("/")) != true){
+                    
+                    miStack.Push(dato);
+                }
+                //Si el caracter es una suma saca de la pila los dos ultimos ingresado y realiza operacion
+                if(Character.toString(sCadenaSinBlancos.charAt(x)).equals("+")){
+                    operando2 = Double.parseDouble(miStack.Pop());
+                    operando1 = Double.parseDouble(miStack.Pop());
+                    miStack.Push(Double.toString(operando1 + operando2));
+                }
+                //Si el caracter es una resta saca de la pila los dos ultimos ingresado y realiza operacion
+                if(Character.toString(sCadenaSinBlancos.charAt(x)).equals("-")){
+                    operando2 = Double.parseDouble(miStack.Pop());
+                    operando1 = Double.parseDouble(miStack.Pop());
+                    miStack.Push(Double.toString(operando1 - operando2));
+                }
+                //Si el caracter es una multiplicacion saca de la pila los dos ultimos ingresado y realiza operacion
+                if(Character.toString(sCadenaSinBlancos.charAt(x)).equals("*")){
+                    operando2 = Double.parseDouble(miStack.Pop());
+                    operando1 = Double.parseDouble(miStack.Pop());
+                    miStack.Push(Double.toString(operando1 * operando2));
+                }
+                //Si el caracter es una division saca de la pila los dos ultimos ingresado y realiza operacion
+                if(Character.toString(sCadenaSinBlancos.charAt(x)).equals("/")){
+                    operando2 = Double.parseDouble(miStack.Pop());
+                    operando1 = Double.parseDouble(miStack.Pop());
+                    miStack.Push(Double.toString(operando1 / operando2));
+                }
+                
+            }
+            //Resultado
+            System.out.println("El resultado es: " + miStack.Pop());
+            
+        }
+        }catch (IOException e) {
+        e.printStackTrace();
+        }
+        }
+    }
 	
-}
 	
+		
 
 
